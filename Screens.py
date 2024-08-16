@@ -114,7 +114,7 @@ def main_menu():
         print(Fore.LIGHTCYAN_EX,"3) Borrowing and Returning Books")
         print(Fore.LIGHTCYAN_EX,"4) Fine Management")
         print(Fore.LIGHTCYAN_EX,"5) Reservation System")
-        print(Fore.RED,"q) Quit",Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX,"q) Quit",Style.RESET_ALL)
 
         choice = input("Enter your choice: ").strip()
 
