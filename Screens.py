@@ -1,5 +1,7 @@
 from colorama import Fore, Style
 
+from Library import Library
+Library = Library()
 
 def Book_Management():
     while True:
@@ -8,17 +10,18 @@ def Book_Management():
         print(Fore.LIGHTCYAN_EX,"2) Remove Book")
         print(Fore.LIGHTCYAN_EX,"3) Display Books")
         print(Fore.LIGHTRED_EX,"b) Back",Style.RESET_ALL)
-
         choice = input("Enter your choice: ").strip()
         if choice == '1':
-            pass
-            #add_book()
+            title = input("Enter title : ")
+            author = input("Enter author : ")
+            isb = input("Enter ISB : ")
+            copies = input("Enter number of copies : ") #dont forget to make the validaton later
+            Library.Add_Book(title,author,isb,copies)
         elif choice == '2':
-            pass
-           #remove_book()
+            isb = input("Enter ISB : ")
+            Library.Remove_Book(isb)
         elif choice == '3':
-            pass
-           # display_books()
+            Library.Display_Books()
         elif choice.lower() == 'b':
             break
         else:
@@ -35,11 +38,11 @@ def User_Management():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            pass
-            #add_user()
+            username = input("Enter your username: ")
+            role = input("Enter your role: ")
+            Library.Add_User(username, role)
         elif choice == '2':
-            pass
-            #display_user_details()
+            Library.Display_Users()
         elif choice.lower() == 'b':
             break
         else:
@@ -58,8 +61,10 @@ def Borrow_Return_Books():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            pass
-            #borrow_book()
+            user = input("Enter User : ")
+            isbn = input("Enter isbn : ")
+
+            Library.Borrow_Book(user ,isbn)
         elif choice == '2':
             pass
             #return_book()
