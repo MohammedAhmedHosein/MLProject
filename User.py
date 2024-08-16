@@ -7,4 +7,11 @@ class User :
         self.Fines = 0
 
     def __str__(self):
-        return f"{self.name} ({self.role}) - Borrowed Books : {', '.join([book.title for book in self.Borrowed_Books])}, Fines: {self.Fines}"
+        borrowed_books = ', '.join(book.title for book in self.Borrowed_Books) or "None"
+        return (
+            f"User: {self.name} - "
+            f"Role: {self.role} - "
+            f"Borrowed Books: {borrowed_books} - "
+            f"Fines: {self.Fines}"
+        )
+
