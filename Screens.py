@@ -3,11 +3,11 @@ from colorama import Fore, Style
 
 def Book_Management():
     while True:
-        print(Fore.LIGHTBLUE_EX ,"\n=== Book Management System ===")
-        print(Fore.GREEN ,"1) Add Book")
-        print(Fore.GREEN ,"2) Remove Book")
-        print(Fore.GREEN ,"3) Display Books")
-        print(Fore.RED,"b) Back",Style.RESET_ALL)
+        print(Fore.LIGHTGREEN_EX ,"\n=== Book Management System ===")
+        print(Fore.LIGHTCYAN_EX,"1) Add Book")
+        print(Fore.LIGHTCYAN_EX,"2) Remove Book")
+        print(Fore.LIGHTCYAN_EX,"3) Display Books")
+        print(Fore.LIGHTRED_EX,"b) Back",Style.RESET_ALL)
 
         choice = input("Enter your choice: ").strip()
         if choice == '1':
@@ -27,10 +27,10 @@ def Book_Management():
 
 def User_Management():
     while True:
-        print(Fore.LIGHTBLUE_EX ,"\n=== User Management System ===")
-        print(Fore.GREEN,"1) Add User")
-        print(Fore.GREEN,"2) Display User Details")
-        print(Fore.RED,"b) Back",Style.RESET_ALL)
+        print(Fore.LIGHTGREEN_EX ,"\n=== User Management System ===")
+        print(Fore.LIGHTCYAN_EX,"1) Add User")
+        print(Fore.LIGHTCYAN_EX,"2) Display User Details")
+        print(Fore.LIGHTRED_EX,"b) Back",Style.RESET_ALL)
 
         choice = input("Enter your choice: ").strip()
 
@@ -48,11 +48,11 @@ def User_Management():
 
 def Borrow_Return_Books():
     while True:
-        print(Fore.LIGHTBLUE_EX  ,"\n=== Borrowing and Returning Books ===")
-        print(Fore.GREEN,"1) Borrow Book")
-        print(Fore.GREEN,"2) Return Book")
-        print(Fore.GREEN,"3) Reserve Book")
-        print(Fore.RED,"b) Back",Style.RESET_ALL)
+        print(Fore.LIGHTGREEN_EX  ,"\n=== Borrowing and Returning Books ===")
+        print(Fore.LIGHTCYAN_EX,"1) Borrow Book")
+        print(Fore.LIGHTCYAN_EX,"2) Return Book")
+        print(Fore.LIGHTCYAN_EX,"3) Reserve Book")
+        print(Fore.LIGHTRED_EX,"b) Back",Style.RESET_ALL)
 
 
         choice = input("Enter your choice: ").strip()
@@ -74,9 +74,9 @@ def Borrow_Return_Books():
 
 def Fine_Management():
     while True:
-        print(Fore.LIGHTBLUE_EX ,"\n=== Fine Management System ===")
-        print(Fore.GREEN,"1) Calculate Fine")
-        print(Fore.RED, "b) Back", Style.RESET_ALL)
+        print(Fore.LIGHTGREEN_EX ,"\n=== Fine Management System ===")
+        print(Fore.LIGHTCYAN_EX,"1) Calculate Fine")
+        print(Fore.LIGHTRED_EX, "b) Back", Style.RESET_ALL)
 
         choice = input("Enter your choice: ").strip()
 
@@ -91,9 +91,9 @@ def Fine_Management():
 
 def Reservation_System():
     while True:
-        print(Fore.LIGHTBLUE_EX,"\n=== Reservation System ===")
-        print(Fore.GREEN,"1) Check Reservations")
-        print(Fore.RED,"b) Back",Style.RESET_ALL)
+        print(Fore.LIGHTGREEN_EX,"\n=== Reservation System ===")
+        print(Fore.LIGHTCYAN_EX,"1) Check Reservations")
+        print(Fore.LIGHTRED_EX,"b) Back",Style.RESET_ALL)
 
         choice = input("Enter your choice: ").strip()
 
