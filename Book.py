@@ -1,4 +1,4 @@
-class BookManagement :
+class Book :
     #isbn = International Standard Book Number
     def __init__(self , title , author , isbn , copies):
         self.title  = title
