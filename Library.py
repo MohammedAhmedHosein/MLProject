@@ -44,7 +44,10 @@ class Library :
                 if int(book.copies) > int(book.Borrowed_copies):
                     book.Borrowed_copies = str(int(book.Borrowed_copies) + 1)
                     user.Borrowed_Books.append(book)
+                    book.available_copies = str(int(book.available_copies) - 1)
+
                     print(f"{user.name} has borrowed {book.title}")
+
 
                     return
                 elif int(book.Reserved_copies) > 0:
