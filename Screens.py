@@ -1,5 +1,6 @@
 from colorama import Fore, Style
 
+import User
 from Library import Library
 Library = Library()
 
@@ -61,16 +62,19 @@ def Borrow_Return_Books():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
+
+            username = input("Enter User : ")
+            isbn = input("Enter isbn : ")
+            Library.Borrow_Book(username ,isbn)
+        elif choice == '2':
+            username = input("Enter User : ")
+            isbn = input("Enter isbn : ")
+            Library.Return_Book(username,isbn)
+            pass
+        elif choice == '3':
             user = input("Enter User : ")
             isbn = input("Enter isbn : ")
-
-            Library.Borrow_Book(user ,isbn)
-        elif choice == '2':
-            pass
-            #return_book()
-        elif choice == '3':
-            pass
-            #reserve_book()
+            Library.Reserve_Book(user, isbn)
         elif choice.lower() == 'b':
             break
         else:
@@ -86,8 +90,10 @@ def Fine_Management():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            pass
-            #calculate_fine()
+            user = input("Enter User : ")
+            fine = input("Enter Fine : ")
+            Library.Charge_Fine(user,fine)
+
         elif choice.lower() == 'b':
             break
         else:
@@ -103,12 +109,14 @@ def Reservation_System():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            pass
-            #check_reservations()
+            user = input("Enter User : ")
+            isbn = input("Enter isbn : ")
+            Library.Reserved_Book(user,isbn)
         elif choice.lower() == 'b':
             break
         else:
             print("Invalid choice. Please enter 1 or 'b' to go back.")
+
 
 
 def main_menu():

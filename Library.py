@@ -28,47 +28,169 @@ class Library :
         for user in self.Users:
             print(user)
 
+    def Borrow_Book(self, username, isbn):
 
-    def Borrow_Book(self , user , isbn):
+        user = None
+        for u in User.Users:
+            if u.name == username:
+                user = u
+                break
+
+        if not user:
+            print(f"User {username} not found!")
+            return
         for book in self.Books:
             if book.isbn == isbn:
-                if book.copies > book.Borrowed_copies :
-                    book.Borrowed_copies +=1
+                if int(book.copies) > int(book.Borrowed_copies):
+                    book.Borrowed_copies = str(int(book.Borrowed_copies) + 1)
                     user.Borrowed_Books.append(book)
-                    print(f"{user.name} has borrowed {book.title} ")
+                    print(f"{user.name} has borrowed {book.title}")
+
                     return
-                elif book.Reserved_copies > 0:
-                    print(f"{book.title} is Reserved , Take Another Book ")
+                elif int(book.Reserved_copies) > 0:
+                    print(f"{book.title} is reserved, take another book.")
                     return
                 else:
-                    print(f"{book.title} is not Available ")
+                    print(f"{book.title} is not available.")
                     return
-        print("Book Not Found !!!")
+        print("Book not found!")
 
+    def Return_Book(self, username, isbn):
 
-    def Return_Book(self , user , isbn):
+        user = None
+        for u in User.Users:
+            if u.name == username:
+                user = u
+                break
+
+        if not user:
+            print(f"User {username} not found!")
+            return
+
+        book_to_return = None
         for book in self.Books:
             if book.isbn == isbn:
-                book.Borrowed_copies -=1
-                user.Borrowed_Books.remove(book)
-                print(f"{user.name } has returned {book.title} ")
-                if book.Borrowed_copies < book.copies:
-                    book.Reserved_copies -=1
-                return
-        print("Book not found in users borrowed books ")
+                book_to_return = book
+                break
+
+        if not book_to_return:
+            print(f"Book with ISBN {isbn} not found!")
+            return
+
+        if book_to_return not in user.Borrowed_Books:
+            print(f"Book {book_to_return.title} is not in {user.name}'s borrowed books.")
+            return
+
+        book_to_return.Borrowed_copies = str(int(book_to_return.Borrowed_copies) - 1)
+        user.Borrowed_Books.remove(book_to_return)
+        print(f"{user.name} has returned {book_to_return.title}")
 
 
-    def Charge_Fine(self , user , overdue ):
-        user.Fines += overdue
-        print(f"{user.name} has been charged {overdue} units of fine ")
+        if int(book_to_return.Borrowed_copies) < int(book_to_return.copies) and int(book_to_return.Reserved_copies) > 0:
+            book_to_return.Reserved_copies = str(int(book_to_return.Reserved_copies) - 1)
+            print(f"There were reservations for {book_to_return.title}. Now available.")
 
-    def Reserve_ook(self, user, isbn):
+        return
+
+    def Charge_Fine(self, username, overdue):
+
+        user = None
+        for u in User.Users:
+            if u.name == username:
+                user = u
+                break
+
+        if not user:
+            print(f"User {username} not found!")
+            return
+
+        try:
+
+            overdue_amount = float(overdue)
+            user.Fines = str(float(user.Fines) + overdue_amount)
+            print(f"{user.name} has been charged {overdue_amount} units of fine")
+        except ValueError:
+            print(f"Invalid fine amount: {overdue}")
+
+        return
+
+    def Reserve_Book(self, username, isbn):
+
+        user = None
+        for u in User.Users:
+            if u.name == username:
+                user = u
+                break
+
+        if not user:
+            print(f"User {username} not found!")
+            return
+
+
+        book_to_reserve = None
         for book in self.Books:
             if book.isbn == isbn:
-                if book.copies > book.borrowed_copies:
-                    print(f"{book.title} is not available for reservation")
-                    return
-                book.reserved_copies += 1
-                print(f"{user.name} has reserved {book.title}")
-                return
-        print("Book not found")
+                book_to_reserve = book
+                break
+
+        if not book_to_reserve:
+            print(f"Book with ISBN {isbn} not found!")
+            return
+
+
+        if int(book_to_reserve.copies) > int(book_to_reserve.Borrowed_copies):
+            print(f"{book_to_reserve.title} is available for borrowing, no need to reserve.")
+            return
+
+
+        if book_to_reserve in user.Reserved_Books:
+            print(f"{user.name} has already reserved {book_to_reserve.title}.")
+            return
+
+
+        book_to_reserve.Reserved_copies = str(int(book_to_reserve.Reserved_copies) + 1)
+        user.Reserved_Books.append(book_to_reserve)
+        print(f"{user.name} has successfully reserved {book_to_reserve.title}.")
+
+        return
+
+    def Reserved_Book(self, username, isbn):
+
+        user = None
+        for u in User.Users:
+            if u.name == username:
+                user = u
+                break
+
+        if not user:
+            print(f"User {username} not found!")
+            return
+
+
+        book_to_reserve = None
+        for book in self.Books:
+            if book.isbn == isbn:
+                book_to_reserve = book
+                break
+
+        if not book_to_reserve:
+            print(f"Book with ISBN {isbn} not found!")
+            return
+
+        if int(book_to_reserve.copies) > int(book_to_reserve.Borrowed_copies):
+            print(f"{book_to_reserve.title} is available for borrowing, no need to reserve.")
+            return
+
+
+        if book_to_reserve in user.Reserved_Books:
+            print(f"{user.name} has already reserved {book_to_reserve.title}.")
+            return
+
+
+        book_to_reserve.Reserved_copies = str(int(book_to_reserve.Reserved_copies) + 1)
+        user.Reserved_Books.append(book_to_reserve)
+        print(f"{user.name} has successfully reserved {book_to_reserve.title}.")
+
+        return
+
+
