@@ -10,12 +10,13 @@ class User:
         User.Users.append(self)
 
     def __str__(self):
-        borrowed_books = ', '.join(book.title for book in self.Borrowed_Books) or "None"
-        reserved_books = ', '.join(book.title for book in self.Reserved_Books) or "None"
+        borrowed_books = ', '.join(f"[{book.title}]" for book in self.Borrowed_Books) or "[None]"
+        reserved_books = ', '.join(f"[{book.title}]" for book in self.Reserved_Books) or "[None]"
         return (
-            f"User: {self.name} - "
-            f"Role: {self.role} - "
-            f"Borrowed Books: {borrowed_books} - "
-            f"Reserved Books: {reserved_books} - "
-            f"Fines: {self.Fines}"
+            f"User: {self.name} | "
+            f"Role: {self.role} | "
+            f"Borrowed Books: {borrowed_books} | "
+            f"Reserved Books: {reserved_books} | "
+            f"Fines: {self.Fines} units"
+
         )
